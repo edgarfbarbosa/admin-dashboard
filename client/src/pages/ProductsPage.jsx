@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import ProductCard from '../components/ProductCard';
+
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
 
@@ -17,19 +19,22 @@ const ProductsPage = () => {
     getProducts();
   }, []);
 
-  if (products.length === 0) return <p>Carregando produtos...</p>;
+  if (!products.length) {
+    return <span className="loading loading-spinner loading-lg"></span>;
+  }
 
   return (
-    <React.Fragment>
-      {products.map((product) => {
-        return (
-          <React.Fragment key={product._id}>
-            <h2>{product.name}</h2>
-            <p>{product.price}</p>
-          </React.Fragment>
-        );
-      })}
-    </React.Fragment>
+    <section>
+      {products.map((product) => (
+        <ProductCard
+          key={product._id}
+          name={product.name}
+          price={product.price}
+          discount={product.discountPercentage}
+          stock={product.stock}
+        />
+      ))}
+    </section>
   );
 };
 
