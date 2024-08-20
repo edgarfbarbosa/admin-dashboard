@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+import Input from '../components/Form/Input';
 
 const AddProductPage = () => {
   const [category, setCategory] = useState('');
@@ -28,50 +30,65 @@ const AddProductPage = () => {
     }
   }
 
+  function handleCategoryChange({ target }) {
+    setCategory(target.value);
+  }
+
+  function handleNameChange({ target }) {
+    setName(target.value);
+  }
+
+  function handlePriceChange({ target }) {
+    setPrice(target.value);
+  }
+
+  function handleDiscountChange({ target }) {
+    setDiscount(target.value);
+  }
+
+  function handleStockChange({ target }) {
+    setStock(target.value);
+  }
+
   return (
     <section>
       <div className="card bg-neutral w-96 shadow-x1">
         <form className="card-body" onSubmit={handleProductRegistration}>
-          <label className="input input-bordered flex items-center gap-2">
-            <input
-              type="text"
-              className="grow"
-              placeholder="Categoria"
-              onChange={(e) => setCategory(e.target.value)}
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">
-            <input
-              type="text"
-              className="grow"
-              placeholder="Nome do produto"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">
-            <input
-              type="text"
-              className="grow"
-              placeholder="Preço do produto"
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">
-            <input
-              type="text"
-              className="grow"
-              placeholder="Desconto do produto"
-              onChange={(e) => setDiscount(e.target.value)}
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">
-            <input
-              type="text"
-              className="grow"
-              placeholder="Estoque do produto"
-              onChange={(e) => setStock(e.target.value)}
-            />
-          </label>
+          <Input
+            label="Categoria:"
+            type="text"
+            placeholder="Categoria..."
+            value={category}
+            onChange={handleCategoryChange}
+          />
+          <Input
+            label="Nome do produto:"
+            type="text"
+            placeholder="Nome do produto..."
+            value={name}
+            onChange={handleNameChange}
+          />
+          <Input
+            label="Preço do produto:"
+            type="text"
+            placeholder="Preço do produto..."
+            value={price}
+            onChange={handlePriceChange}
+          />
+          <Input
+            label="Desconto do produto:"
+            type="text"
+            placeholder="Desconto do produto..."
+            value={discount}
+            onChange={handleDiscountChange}
+          />
+          <Input
+            label="Estoque do produto:"
+            type="text"
+            placeholder="Estoque do produto..."
+            value={stock}
+            onChange={handleStockChange}
+          />
           <div className="card-actions justify-end">
             <button type="submit" className="btn">
               Enviar produto
