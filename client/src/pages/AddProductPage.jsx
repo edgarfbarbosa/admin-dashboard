@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import Input from '../components/Form/Input';
+import Select from '../components/Form/Select';
 
 const AddProductPage = () => {
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('mouses');
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [discount, setDiscount] = useState('');
@@ -18,7 +19,7 @@ const AddProductPage = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          category,
+          category: category.charAt(0).toUpperCase() + category.substring(1),
           name,
           price: parseInt(price),
           discountPercentage: parseInt(discount),
@@ -54,10 +55,8 @@ const AddProductPage = () => {
     <section>
       <div className="card bg-neutral w-96 shadow-x1">
         <form className="card-body" onSubmit={handleProductRegistration}>
-          <Input
+          <Select
             label="Categoria:"
-            type="text"
-            placeholder="Categoria..."
             value={category}
             onChange={handleCategoryChange}
           />
