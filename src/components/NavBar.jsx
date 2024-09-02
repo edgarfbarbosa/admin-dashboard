@@ -1,35 +1,20 @@
-import { Link } from 'react-router-dom';
-import { AlignJustify, User, Package, PackagePlus } from 'lucide-react';
+import { Package, PackagePlus } from 'lucide-react';
 
-const NavBar = () => {
+import MenuItem from './MenuItem';
+
+const Navbar = () => {
   return (
-    <header className="h-screen w-36 flex flex-col items-center">
-      <div className="my-7">
-        <button className="btn btn-square">
-          <AlignJustify />
-        </button>
-      </div>
-      <nav className="h-full flex items-start">
-        <ul className="menu space-y-7">
-          <li>
-            <Link to="/">
-              <User />
-            </Link>
-          </li>
-          <li>
-            <Link to="/products">
-              <Package />
-            </Link>
-          </li>
-          <li>
-            <Link to="/addProduct">
-              <PackagePlus />
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <nav className="h-full flex items-start">
+      <ul className="menu space-y-7">
+        <MenuItem tooltip="Produtos" to="/products">
+          <Package />
+        </MenuItem>
+        <MenuItem tooltip="Adicionar Produto" to="/register">
+          <PackagePlus />
+        </MenuItem>
+      </ul>
+    </nav>
   );
 };
 
-export default NavBar;
+export default Navbar;
