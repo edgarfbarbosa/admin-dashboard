@@ -1,6 +1,6 @@
 import { AlignJustify } from 'lucide-react';
 
-import Navbar from './Navbar';
+import Menu from './Menu';
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
           <AlignJustify />
         </button>
       </div>
-      <Navbar />
+      <Menu />
     </header>
   );
 };

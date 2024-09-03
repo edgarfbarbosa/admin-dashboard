@@ -2,7 +2,7 @@ import { Package, PackagePlus } from 'lucide-react';
 
 import MenuItem from './MenuItem';
 
-const Navbar = () => {
+const Menu = () => {
   return (
     <nav className="h-full flex items-start">
       <ul className="menu space-y-7">
@@ -17,4 +17,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Menu;
